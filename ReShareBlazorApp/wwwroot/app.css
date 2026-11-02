@@ -1,72 +1,66 @@
-/* --- LCARS SINGLE-ROW NAVBAR STYLES --- */
+/* --- DARKER CUSTOM GRAY GLASSMORPHISM --- */
 
 :root {
-    --lcars-orange: #ff9900;
-    --lcars-gold: #ffcc66;
-    --lcars-purple: #cc99cc;
-    --lcars-blue: #9999ff;
-    --lcars-bg: #000000;
-    --lcars-dark: #1a1a1a;
+    --custom-gray-dark: rgba(45, 43, 53, 0.75); /* Ciemniejsza wersja koloru z alfasem */
+    --glass-border: rgba(255, 255, 255, 0.15); /* Subtelna ramka */
+    --glass-focus: rgba(255, 255, 255, 0.4); /* Podświetlenie pola */
+    --text-white: #ffffff;
+    --text-light: #d1d5db;
+    --app-bg: #1e1d24; /* Ciemniejsze, nastrojowe tło strony */
 }
 
-/* Główny kontener - sztywno w jednej linii, wyśrodkowany w pionie */
+/* Główne tło strony */
+body {
+    background-color: var(--app-bg) !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-white);
+}
+
+/* --- 1. NAVBAR --- */
+
 .navbar.bg-1 {
-    background-color: var(--lcars-bg) !important;
-    border-bottom: 4px solid var(--lcars-orange);
-    padding: 6px 12px !important;
-    font-family: 'Arial Black', Gadget, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background-color: var(--custom-gray-dark) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 10px 20px !important;
     display: flex !important;
     align-items: center !important;
     width: 100%;
     box-sizing: border-box;
 }
 
-    /* Lewy łuk LCARS osadzony liniowo (bez wystania w górę) */
     .navbar.bg-1::before {
-        content: "";
-        display: inline-block;
-        width: 18px;
-        height: 26px;
-        background-color: var(--lcars-orange);
-        border-top-left-radius: 14px;
-        border-bottom-left-radius: 14px;
-        margin-right: 10px;
-        flex-shrink: 0;
-        align-self: center;
+        display: none !important;
     }
 
-/* Wewnętrzny układ bootstrapowy w jednej linii */
 .navbar .container-fluid {
     display: flex !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 10px !important;
+    gap: 16px !important;
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* Logo / Brand */
 .navbar .navbar-brand {
-    color: var(--lcars-gold) !important;
-    font-weight: bold;
-    font-size: 0.9rem;
-    background-color: var(--lcars-dark);
-    padding: 4px 10px;
-    border-radius: 8px;
+    color: var(--text-white) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: transparent;
+    padding: 4px 0;
     white-space: nowrap;
     flex-shrink: 0;
+    text-decoration: none !important;
 }
 
-/* Lista linków (Home, Odkrywaj, Wiadomości, Profil) */
 .navbar .navbar-nav {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    gap: 4px;
+    gap: 8px;
     margin: 0 !important;
     padding: 0 !important;
     list-style: none;
@@ -74,67 +68,203 @@
 }
 
 .navbar .nav-link {
-    color: var(--lcars-purple) !important;
-    background-color: var(--lcars-dark);
-    padding: 4px 10px;
+    color: var(--text-light) !important;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 6px 12px;
     border-radius: 8px;
     white-space: nowrap;
-    font-size: 0.8rem;
-    transition: 0.2s;
+    font-size: 0.85rem;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
     .navbar .nav-link:hover,
     .navbar .nav-link.active {
-        background-color: var(--lcars-blue) !important;
-        color: #000 !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: var(--text-white) !important;
+        border-color: var(--glass-border);
     }
 
-/* Formularz wyszukiwania dopasowany do paska */
 .navbar form.hstack {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 8px !important;
     margin: 0 !important;
     flex-shrink: 1;
 }
 
 .navbar .form-control {
-    background-color: var(--lcars-dark) !important;
-    border: 2px solid var(--lcars-purple);
-    color: #fff !important;
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-white) !important;
     border-radius: 8px;
-    height: 28px;
-    padding: 2px 6px;
-    font-size: 0.8rem;
-    min-width: 80px;
-    width: 120px;
+    height: 32px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    min-width: 100px;
+    width: 160px;
+    outline: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-    .navbar .form-control::placeholder {
-        color: #666;
+    .navbar .form-control:focus {
+        border-color: var(--glass-focus) !important;
+        box-shadow: none !important;
+        transform: scale(1.01);
     }
 
-/* Przycisk wyszukiwania */
+    .navbar .form-control::placeholder {
+        color: #9ca3af;
+    }
+
 .navbar .btn-solid.theme-secondary {
-    background-color: var(--lcars-orange) !important;
-    border: none;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid var(--glass-border) !important;
     border-radius: 8px;
-    color: #000 !important;
-    font-weight: bold;
-    height: 28px;
-    padding: 0 8px;
+    color: var(--text-white) !important;
+    height: 32px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
     .navbar .btn-solid.theme-secondary:hover {
-        background-color: var(--lcars-gold) !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
     }
 
 .navbar svg {
-    fill: #000;
+    fill: currentColor;
 }
+
+
+/* --- 2. REGISTER VIEW --- */
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 20px;
+}
+
+.register-card {
+    background-color: var(--custom-gray-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 35px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+    .register-card::before {
+        display: none !important;
+    }
+
+    .register-card h2 {
+        color: var(--text-white) !important;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .register-card p {
+        color: var(--text-light);
+        font-size: 0.85rem;
+        margin-bottom: 24px;
+    }
+
+.register-field {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .register-field label {
+        color: var(--text-light);
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+.register-input {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-white) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-size: 0.9rem;
+    outline: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+    .register-input:focus {
+        border-color: var(--glass-focus) !important;
+        box-shadow: none !important;
+        background-color: rgba(0, 0, 0, 0.4) !important;
+        transform: scale(1.01);
+    }
+
+    .register-input::placeholder {
+        color: #9ca3af;
+    }
+
+.register-terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+    .register-terms label {
+        margin-bottom: 0;
+        cursor: pointer;
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+
+    .register-terms input[type="checkbox"] {
+        accent-color: #6366f1;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+.validation-message {
+    color: #fca5a5 !important;
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+.register-button {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    color: var(--text-white) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    padding: 11px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+    .register-button:hover {
+        background-color: rgba(255, 255, 255, 0.22) !important;
+        transform: translateY(-1px);
+    }
+
+    .register-button:active {
+        transform: translateY(0);
+    }

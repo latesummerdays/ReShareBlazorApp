@@ -17,7 +17,7 @@ namespace ReShareBlazorApp.Models
         [Required(ErrorMessage = "Potwierdź Email!")]
         [Compare(nameof(Password), ErrorMessage = "Hasła muszą być identyczne")]
         public string ConfirmPassword { get; set; } = "";
-        [Range(typeof(bool), "true", "true" = "Zaakceptuj regulamin!")]
-        public bool AcceptTerms { get; set; } = "";
+        [Range(typeof(bool), "true", "true", ErrorMessage= "Zaakceptuj regulamin!")]
+        public bool AcceptTerms { get; set; }
     }
 }

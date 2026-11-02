@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ReShareBlazorApp.Components;
 using ReShareBlazorApp.Data;
@@ -7,6 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ReShareDbContext>
     (options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+})
+    .AddEntityFrameworkStores<ReShareDbContext>()
+    .AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
