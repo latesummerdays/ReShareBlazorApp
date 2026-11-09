@@ -1,68 +1,93 @@
 ﻿@page "/register"
-@inject AuthApiService authApi
-@rendermode InteractiveServer
-@using ReShareBlazorApp.Web.ApiServices
-@using ReShareBlazorApp.Web.Models
-<EditForm Model="@registerModel" OnValidSubmit="Register" FormName="register">
-    <DataAnnotationsValidator />
-    <ValidationSummary/>
-    <div class="register-container">
-        <div class="register-card">
-            <p>@Message</p>
-            <h2>Utwórz konto</h2>
-            <p>Wypełnij formularz, aby się zarejestrowac.</p>
-            <div class="register-field">
-                <label>Nazwa użytkownika</label>
-                <InputText @bind-Value="registerModel.Username"
-                           class="register-input"
-                           placeholder="Wpisz nazwę użytkownika" />
+
+<PageTitle>Rejestracja | reShare</PageTitle>
+
+<div class="auth-page">
+    <div class="auth-card">
+
+        <div class="auth-heading">
+            <span class="eyebrow">DOŁĄCZ DO RESHARE</span>
+            <h1>Stwórz swoje konto.</h1>
+            <p>Dołącz do społeczności, która daje przedmiotom drugie życie.</p>
+        </div>
+
+        <EditForm Model="@registerModel" OnValidSubmit="@Register">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <label for="username">Nazwa użytkownika</label>
+                <InputText id="username"
+                           class="form-control"
+                           @bind-Value="registerModel.Username"
+                           placeholder="Jak mamy Cię nazywać?" />
                 <ValidationMessage For="@(() => registerModel.Username)" />
             </div>
-            <div class="register-field">
-                <label>E-mail</label>
-                <InputText @bind-Value="registerModel.Email"
-                           class="register-input"
-                           placeholder="Wpisz e-mail" />
+
+            <div class="form-group">
+                <label for="email">Adres e-mail</label>
+                <InputText id="email"
+                           class="form-control"
+                           @bind-Value="registerModel.Email"
+                           placeholder="twoj@email.com" />
                 <ValidationMessage For="@(() => registerModel.Email)" />
             </div>
-            <div class="register-field">
 
-                <label>Hasło</label>
-                <InputText @bind-Value="registerModel.Password"
-                           class="register-input"
-                           placeholder="Wpisz hasło" />
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <InputText id="password"
+                           type="password"
+                           class="form-control"
+                           @bind-Value="registerModel.Password"
+                           placeholder="Utwórz hasło" />
                 <ValidationMessage For="@(() => registerModel.Password)" />
             </div>
-            <div class="register-field">
 
-                <label>Potwierdź</label>
-                <InputText @bind-Value="registerModel.ConfirmPassword"
-                           class="register-input"
-                           placeholder="Potwierdź hasło." />
+            <div class="form-group">
+                <label for="confirmPassword">Powtórz hasło</label>
+                <InputText id="confirmPassword"
+                           type="password"
+                           class="form-control"
+                           @bind-Value="registerModel.ConfirmPassword"
+                           placeholder="Wpisz hasło ponownie" />
                 <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
             </div>
-            <div class="register-terms">
-                <InputCheckbox @bind-Value="registerModel.AcceptTerms"/>
-                <label>Akceptuje regulamin.</label>
-            </div>
-            <ValidationMessage For="@(() => registerModel.AcceptTerms)" />
-            <button type="submit" class="register-button">
-                Zarejestruj się
+
+            <button type="submit" class="btn-primary auth-submit">
+                Utwórz konto
             </button>
+        </EditForm>
+
+        <div class="auth-footer">
+            <p>Masz już konto?</p>
+            <a href="/login">Zaloguj się</a>
         </div>
+
     </div>
-</EditForm>
+</div>
 
 @code {
-    private RegisterModel registerModel = new RegisterModel();
-    public string Message { get; set; }
-    private async Task Register()
+    private RegisterModel registerModel = new();
+
+    private void Register()
     {
-        var result = await authApi.RegisterAsync(registerModel);
-        if(result == null)
-        {
-            return;
-        }
-        Message = result.Message;
+        // Tutaj później dodamy logikę rejestracji.
+    }
+
+    public class RegisterModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Podaj nazwę użytkownika.")]
+        public string Username { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Podaj adres e-mail.")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Podaj poprawny adres e-mail.")]
+        public string Email { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Podaj hasło.")]
+        [System.ComponentModel.DataAnnotations.MinLength(8, ErrorMessage = "Hasło musi mieć minimum 8 znaków.")]
+        public string Password { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Powtórz hasło.")]
+        [System.ComponentModel.DataAnnotations.Compare(nameof(Password), ErrorMessage = "Hasła nie są takie same.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 }

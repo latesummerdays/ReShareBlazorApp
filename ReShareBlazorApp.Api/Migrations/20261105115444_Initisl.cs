@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ReShareBlazorApp.Migrations
+namespace ReShareBlazorApp.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Initisl : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

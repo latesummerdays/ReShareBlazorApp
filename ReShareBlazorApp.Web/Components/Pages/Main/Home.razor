@@ -1,0 +1,299 @@
+﻿@page "/"
+
+<PageTitle>reShare — Bilety na nowe doświadczenia</PageTitle>
+
+<main class="page-container">
+
+    @* HERO *@
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">
+                Marketplace biletów
+            </span>
+
+            <h1>
+                Dobre wydarzenia.
+                <span>Lepsze okazje.</span>
+            </h1>
+
+            <p>
+                Odkrywaj wydarzenia, znajdź bilety w atrakcyjnych cenach
+                i przekazuj dalej te, z których nie możesz skorzystać.
+                Wszystko w jednym miejscu.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/discover" class="btn-primary">
+                    Przeglądaj bilety
+                </a>
+
+                <a href="/AddProduct" class="btn-secondary">
+                    Dodaj ogłoszenie
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-art">
+
+                <span class="hero-art-label">
+                    Odkrywaj więcej
+                </span>
+
+                <div class="hero-art-line"></div>
+
+                <div class="hero-art-title">
+                    Twoje<br />
+                    następne<br />
+                    wydarzenie.
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    @* KATEGORIE *@
+    <section class="section-container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                Kategorie
+            </span>
+
+            <h2>
+                Znajdź coś dla siebie
+            </h2>
+
+            <p>
+                Wybierz kategorię i odkryj wydarzenia,
+                które warto zobaczyć na żywo.
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <a href="/discover" class="category-card">
+                <div class="category-icon">01</div>
+                <h3>Koncerty</h3>
+                <p>Muzyka na żywo i wyjątkowe występy.</p>
+            </a>
+
+            <a href="/discover" class="category-card">
+                <div class="category-icon">02</div>
+                <h3>Teatr</h3>
+                <p>Spektakle, musicale i wydarzenia kulturalne.</p>
+            </a>
+
+            <a href="/discover" class="category-card">
+                <div class="category-icon">03</div>
+                <h3>Sport</h3>
+                <p>Emocje sportowe i wydarzenia na żywo.</p>
+            </a>
+
+            <a href="/discover" class="category-card">
+                <div class="category-icon">04</div>
+                <h3>Podróże</h3>
+                <p>Wyjazdy i nowe miejsca do odkrycia.</p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    @* PRZYKŁADOWE OFERTY *@
+    <section class="home-offers">
+
+        <div class="section-title-wrapper">
+
+            <div>
+                <span class="eyebrow">
+                    Wybrane oferty
+                </span>
+
+                <h2 class="section-title">
+                    Warto zobaczyć
+                </h2>
+            </div>
+
+            <a href="/discover" class="section-link">
+                Wszystkie oferty
+            </a>
+
+        </div>
+
+        <div class="offer-grid">
+
+            <article class="offer-card">
+
+                <div class="offer-visual concert">
+                    <span class="offer-visual-label">
+                        Muzyka
+                    </span>
+                </div>
+
+                <div class="offer-content">
+
+                    <span class="offer-category">
+                        Koncert
+                    </span>
+
+                    <h3>
+                        Koncert — miejsce na niezapomniany wieczór
+                    </h3>
+
+                    <div class="offer-meta">
+                        Przykładowa lokalizacja · Termin do ustalenia
+                    </div>
+
+                    <div class="offer-footer">
+
+                        <div>
+                            <span class="offer-price-label">
+                                Cena biletu
+                            </span>
+
+                            <span class="offer-price">
+                                89 zł
+                            </span>
+                        </div>
+
+                        <a href="/discover" class="btn-buy-sm">
+                            Zobacz
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="offer-card">
+
+                <div class="offer-visual theatre">
+                    <span class="offer-visual-label">
+                        Kultura
+                    </span>
+                </div>
+
+                <div class="offer-content">
+
+                    <span class="offer-category">
+                        Teatr
+                    </span>
+
+                    <h3>
+                        Wieczór w teatrze — wyjątkowy spektakl
+                    </h3>
+
+                    <div class="offer-meta">
+                        Przykładowa lokalizacja · Termin do ustalenia
+                    </div>
+
+                    <div class="offer-footer">
+
+                        <div>
+                            <span class="offer-price-label">
+                                Cena biletu
+                            </span>
+
+                            <span class="offer-price">
+                                65 zł
+                            </span>
+                        </div>
+
+                        <a href="/discover" class="btn-buy-sm">
+                            Zobacz
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="offer-card">
+
+                <div class="offer-visual sport">
+                    <span class="offer-visual-label">
+                        Sport
+                    </span>
+                </div>
+
+                <div class="offer-content">
+
+                    <span class="offer-category">
+                        Wydarzenie sportowe
+                    </span>
+
+                    <h3>
+                        Mecz na żywo — poczuj atmosferę stadionu
+                    </h3>
+
+                    <div class="offer-meta">
+                        Przykładowa lokalizacja · Termin do ustalenia
+                    </div>
+
+                    <div class="offer-footer">
+
+                        <div>
+                            <span class="offer-price-label">
+                                Cena biletu
+                            </span>
+
+                            <span class="offer-price">
+                                75 zł
+                            </span>
+                        </div>
+
+                        <a href="/discover" class="btn-buy-sm">
+                            Zobacz
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    @* BANER SPRZEDAŻOWY *@
+    <section class="home-cta">
+
+        <div class="home-cta-content">
+
+            <span class="eyebrow">
+                Sprzedaj na reShare
+            </span>
+
+            <h2>
+                Nie możesz skorzystać z biletu?
+            </h2>
+
+            <p>
+                Dodaj ogłoszenie i daj komuś szansę na udział
+                w wydarzeniu. To prosty sposób, by bilet nie przepadł.
+            </p>
+
+        </div>
+
+        <a href="/AddProduct" class="btn-light">
+            Dodaj ogłoszenie
+        </a>
+
+    </section>
+
+</main>
